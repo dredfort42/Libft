@@ -1,5 +1,6 @@
-SRCSALL	=	${wildcard *.c}
-OBJSALL	=	${SRCSALL:.c=.o}
+NAME	=	libft.a
+CC		=	gcc
+FLAGS	=	-Wall -Wextra -Werror
 
 SRCS_MAIN	=	ft_memset.c		ft_strrchr.c\
 			ft_bzero.c		ft_strnstr.c\
@@ -38,9 +39,7 @@ SRCS_BONUS	=	ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c\
 
 OBJS_BONUS	=	${SRCS_BONUS:.c=.o}
 
-NAME	=	libft.a
-CC		=	gcc
-FLAGS	=	-Wall -Wextra -Werror
+
 RM		=	-rm -f
 
 all:	${NAME}

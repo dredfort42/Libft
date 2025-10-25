@@ -1,18 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 13:12:26 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/17 13:12:28 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-int	ft_islower(int c)
+/**
+ * @brief Checks if the given character is a lowercase letter.
+ * @param c The character to check.
+ * @return Returns a non-zero value if the character is a lowercase letter,
+ *         otherwise returns 0.
+ */
+int ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }

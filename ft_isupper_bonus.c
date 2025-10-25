@@ -1,18 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:01:34 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/17 14:01:39 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-int	ft_isupper(int c)
+/**
+ * @brief Checks if the given character is an uppercase letter.
+ * @param c The character to check.
+ * @return Returns a non-zero value if the character is an uppercase letter,
+ *         otherwise returns 0.
+ */
+int ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }

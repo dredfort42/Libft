@@ -1,19 +1,25 @@
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+/**
+ * @brief Locates the first occurrence of character c in the string s.
+ * @param s Pointer to the string to be searched.
+ * @param c The character to locate (converted to char).
+ * @return A pointer to the first occurrence of c in s,
+ *         or NULL if c is not found.
+ */
+char *ft_strchr(const char *s, int c)
 {
-	char	*ps;
-	int		i;
+	const unsigned char uc = (unsigned char)c;
 
-	ps = (char *)s;
-	i = 0;
-	while (ps[i])
+	if (!s)
+		return (NULL);
+	while (*s)
 	{
-		if (ps[i] == c)
-			return (&ps[i]);
-		i++;
+		if ((unsigned char)*s == uc)
+			return (char *)s;
+		s++;
 	}
-	if (c == '\0')
-		return (&ps[i]);
-	return (0);
+	if (uc == '\0')
+		return (char *)s;
+	return (NULL);
 }

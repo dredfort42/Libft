@@ -1,24 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 15:36:38 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/17 15:36:41 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+/**
+ * @brief Copies n bytes from memory area src to memory area dst.
+ * @param dst Pointer to the destination memory area.
+ * @param src Pointer to the source memory area.
+ * @param n The number of bytes to copy.
+ * @return A pointer to the destination memory area dst.
+ */
+void *ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*pdst;
-	char	*psrc;
-	size_t	i;
+	char *pdst;
+	char *psrc;
+	size_t i;
 
-	if (n == 0 || dst == src)
+	if (!n || dst == src)
 		return (dst);
 	pdst = (char *)dst;
 	psrc = (char *)src;
