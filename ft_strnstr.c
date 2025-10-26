@@ -1,38 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 16:36:14 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 16:36:27 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+/**
+ * @brief Locates the first occurrence of the null-terminated string needle
+ *        in the string haystack, where not more than len characters are searched.
+ * @param haystack Pointer to the string to be searched.
+ * @param needle Pointer to the substring to be located.
+ * @param len Maximum number of characters to search.
+ * @return A pointer to the beginning of the located substring,
+ *         or NULL if the substring is not found within the given length.
+ */
+char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*phaystack;
-	size_t	charnum;
-	size_t	i;
-	size_t	ndllen;
+	size_t i;
+	size_t nlen;
 
-	phaystack = (char *)haystack;
-	ndllen = ft_strlen(needle);
-	if (ndllen == 0 || haystack == needle)
-		return (phaystack);
-	charnum = 0;
-	while (phaystack[charnum] && charnum < len)
+	nlen = ft_strlen(needle);
+	if (!nlen)
+		return (char *)haystack;
+	if (!len)
+		return NULL;
+	for (i = 0; haystack[i] != '\0' && i < len; ++i)
 	{
-		i = 0;
-		while (phaystack[charnum + i] && needle[i]
-			&& phaystack[charnum + i] == needle[i] && charnum + i < len)
-			i++;
-		if (i == ndllen)
-			return (phaystack + charnum);
-		charnum++;
+		if (haystack[i] != needle[0])
+			continue;
+		/* ensure there is enough room within len for the whole needle */
+		if (nlen > len - i)
+			continue;
+		/* compare needle */
+		if (ft_strncmp(haystack + i, needle, nlen) == 0)
+			return (char *)(haystack + i);
 	}
-	return (0);
+	return NULL;
 }

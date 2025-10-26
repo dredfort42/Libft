@@ -1,33 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 16:34:34 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 16:34:36 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+/**
+ * @brief Locates the last occurrence of character c in the string s.
+ * @param s Pointer to the string to be searched.
+ * @param c The character to locate (converted to char).
+ * @return A pointer to the last occurrence of c in s,
+ *         or NULL if c is not found.
+ */
+char *ft_strrchr(const char *s, int c)
 {
-	char	*ps;
-	int		len;
-	int		i;
+	char *p;
+	char ch;
 
-	ps = (char *)s;
-	len = ft_strlen(ps);
-	i = 1;
-	while (len - i >= 0)
+	if (!s)
+		return (NULL);
+	ch = (char)c;
+	p = (char *)s + ft_strlen(s); /* start at terminating '\0' */
+	while (p >= s)
 	{
-		if (ps[len - i] == c)
-			return (&ps[len - i]);
-		i++;
+		if (*p == ch)
+			return (p);
+		p--;
 	}
-	if (c == '\0')
-		return (&ps[len]);
-	return (0);
+	return (NULL);
 }
