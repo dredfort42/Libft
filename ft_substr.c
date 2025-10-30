@@ -1,55 +1,58 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 16:31:38 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 16:31:40 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*substr(char *sub, const char *s, unsigned int start, size_t len)
-{
-	size_t	i;
+// static void *substr(char *sub, const char *s, unsigned int start, size_t len)
+// {
+// 	size_t i;
 
-	i = 0;
-	while (s[i + start] && i < len)
-	{
-		sub[i] = s[i + start];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
-}
+// 	i = 0;
+// 	while (s[i + start] && i < len)
+// 	{
+// 		sub[i] = s[i + start];
+// 		i++;
+// 	}
+// 	sub[i] = '\0';
+// 	return (sub);
+// }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/**
+ * Extracts a substring from the string `s`, starting at index `start`
+ * and of maximum length `len`. Allocates memory for the substring.
+ * @param s The original string.
+ * @param start The starting index for the substring.
+ * @param len The maximum length of the substring.
+ * @return A pointer to the newly allocated substring, or NULL if allocation fails.
+ */
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*sub;
-	size_t	size;
+	char *sub;
+	size_t s_len;
+	size_t sub_len;
+	size_t i;
 
 	if (!s)
-		return (0);
-	if (ft_strlen(s) < start || !len)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len || len == 0)
 	{
-		sub = malloc(sizeof(char));
+		sub = (char *)malloc(1);
 		if (!sub)
-			return (0);
+			return (NULL);
 		sub[0] = '\0';
 		return (sub);
 	}
-	if (ft_strlen(s) - start > len)
-		size = len;
-	else
-		size = ft_strlen(s) - start;
-	sub = malloc(sizeof(char) * (size + 1));
+	sub_len = s_len - start;
+	if (sub_len > len)
+		sub_len = len;
+	sub = (char *)malloc(sub_len + 1);
 	if (!sub)
-		return (0);
-	substr(sub, s, start, len);
-	if (!sub)
-		return (0);
+		return (NULL);
+	i = 0;
+	while (i < sub_len)
+	{
+		sub[i] = s[start + i];
+		i++;
+	}
+	sub[i] = '\0';
 	return (sub);
 }
