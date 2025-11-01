@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+// Bonus: Linked list structure
 typedef struct s_list
 {
 	void *content;

@@ -1,65 +1,55 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 13:34:41 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/20 13:34:43 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static int	ft_isminus(int *n)
+static int is_negative(int n)
 {
-	int	minus;
-
-	minus = 0;
-	if (*n < 0)
-	{
-		*n *= -1;
-		minus = 1;
-	}
-	return (minus);
+	return (n < 0);
 }
 
-static int	ft_numlen(int n)
+/**
+ * @brief Counts the number of digits in a non-negative long integer.
+ * @param value The non-negative long integer.
+ * @return The number of digits in the integer.
+ */
+static int count_digits(long value)
 {
-	int	len;
-
-	len = 0;
-	n /= 10;
-	while (n)
+	int digits = 1;
+	while (value >= 10)
 	{
-		n /= 10;
-		len++;
+		value /= 10;
+		digits++;
 	}
-	return (len);
+	return (digits);
 }
 
-char	*ft_itoa(int n)
+/**
+ * @brief Converts an integer to its string representation.
+ * @param n The integer to convert.
+ * @return A pointer to the newly allocated string representing the integer.
+ *         Returns NULL if memory allocation fails.
+ */
+char *ft_itoa(int n)
 {
-	int		len;
-	int		minus;
-	char	*str;
+	long value = n;
+	int neg = is_negative(n);
+	int digits;
+	int len;
+	char *str;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	len = 0;
-	minus = ft_isminus(&n);
-	len = ft_numlen(n) + minus + 2;
-	str = malloc(sizeof(char) * len);
+	if (neg)
+		value = -value;
+	digits = count_digits(value);
+	len = digits + neg + 1; /* +1 for NUL */
+	str = (char *)malloc((size_t)len);
 	if (!str)
-		return (0);
-	str[--len] = '\0';
-	while (len--)
+		return (NULL);
+	str[len - 1] = '\0';
+	/* fill digits from the end */
+	while (digits--)
 	{
-		str[len] = n % 10 + '0';
-		n /= 10;
+		str[neg + digits] = (char)('0' + (value % 10));
+		value /= 10;
 	}
-	if (minus)
+	if (neg)
 		str[0] = '-';
 	return (str);
 }

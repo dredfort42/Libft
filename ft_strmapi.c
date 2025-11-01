@@ -1,33 +1,60 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 12:52:05 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/20 12:52:07 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+/**
+ * @brief Allocates memory for the result string of given length.
+ * @param len The length of the string to allocate (excluding NUL terminator).
+ * @return A pointer to the newly allocated string, or NULL if allocation fails.
+ */
+static char *alloc_result(size_t len)
 {
-	char	*ps;
-	int		i;
+	char *res;
 
-	if (!s || !f)
-		return (0);
-	ps = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!ps)
-		return (0);
+	res = (char *)malloc(len + 1);
+	if (res)
+		res[len] = '\0';
+	return (res);
+}
+
+/**
+ * @brief Applies the mapping function f to each character of the source string
+ *        and stores the result in the destination string.
+ * @param src The source string.
+ * @param dst The destination string.
+ * @param f The mapping function to apply.
+ * @param len The length of the strings.
+ */
+static void apply_map(const char *src, char *dst, char (*f)(unsigned int, char), size_t len)
+{
+	size_t i;
+
 	i = 0;
-	while (s[i])
+	while (i < len)
 	{
-		ps[i] = f(i, s[i]);
+		dst[i] = f((unsigned int)i, src[i]);
 		i++;
 	}
-	ps[i] = '\0';
-	return (ps);
+}
+
+/**
+ * @brief Applies the function f to each character of the string s,
+ *        passing its index as the first argument to create a new string.
+ * @param s The input string.
+ * @param f The function to apply to each character and its index.
+ * @return A pointer to the newly allocated string resulting from
+ *         the successive applications of f. Returns NULL if
+ *         memory allocation fails or if s or f is NULL.
+ */
+char *ft_strmapi(const char *s, char (*f)(unsigned int, char))
+{
+	size_t len;
+	char *res;
+
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	res = alloc_result(len);
+	if (!res)
+		return (NULL);
+	apply_map(s, res, f, len);
+	return (res);
 }
