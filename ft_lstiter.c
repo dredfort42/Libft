@@ -1,25 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 15:30:06 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 15:30:08 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+/**
+ * @brief Iterates through the list and applies the function f to the content of each node.
+ * @param lst Pointer to the head of the list.
+ * @param f Function pointer to the function to be applied to each node's content.
+ */
+void ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst && f)
+	if (!f)
+		return;
+	while (lst)
 	{
-		while (lst)
-		{
-			f(lst->content);
-			lst = lst->next;
-		}
+		f(lst->content);
+		lst = lst->next;
 	}
 }

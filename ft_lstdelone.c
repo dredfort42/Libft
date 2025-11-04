@@ -1,22 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 15:12:08 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 15:12:10 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+/**
+ * @brief Deletes a single node from the linked list.
+ * @param lst Pointer to the node to be deleted.
+ * @param del Function pointer to the function used to free the content of the node.
+ */
+void ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst && del)
-	{
+	if (!lst)
+		return;
+	if (del)
 		del(lst->content);
-	}
 	free(lst);
 }

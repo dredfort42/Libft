@@ -1,28 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 13:47:49 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 13:47:51 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+/**
+ * @brief Counts the number of nodes in a linked list.
+ * @param lst Pointer to the head of the list.
+ * @return The number of nodes in the list.
+ */
+int ft_lstsize(t_list *lst)
 {
-	int	i;
+	int count;
 
-	if (!lst)
-		return (0);
-	i = 0;
+	count = 0;
 	while (lst)
 	{
-		i++;
+		count++;
 		lst = lst->next;
 	}
-	return (i);
+	return (count);
 }

@@ -1,32 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dredfort <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 15:19:32 by dredfort          #+#    #+#             */
-/*   Updated: 2021/04/21 15:19:39 by dredfort         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+/**
+ * @brief Clears and frees all nodes in the linked list.
+ * @param lst Double pointer to the head of the list.
+ * @param del Function pointer to the function used to free the content of each node.
+ */
+void ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*tmp;
-	t_list	*p;
+	t_list *tmp;
 
-	if (lst && del)
+	if (!lst || !del)
+		return;
+	while (*lst)
 	{
-		p = *lst;
-		while (p)
-		{
-			tmp = p->next;
-			del(p->content);
-			free(p);
-			p = tmp;
-		}
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	*lst = 0;
+	*lst = NULL;
 }
