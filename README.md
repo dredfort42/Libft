@@ -20,6 +20,34 @@ To use the library in another project, either copy the source files into your pr
 gcc -I. -L. -lft your_program.c -o your_program
 ```
 
+### Linking and compiler flags — quick reference
+
+-   `gcc` — the GNU C compiler (used here as the driver that invokes the compiler, assembler and linker).
+-   `-I.` — add the current directory to the header search path so `#include "libft.h"` is found.
+-   `-L.` — add the current directory to the library search path so `-l<name>` can find `lib<name>.a` or `lib<name>.so`. You can pass multiple `-L` flags to search additional directories.
+-   `-l<name>` — link with the library named `<name>`. The linker looks for `lib<name>.a` (static) or `lib<name>.so` (shared) in the `-L` paths.
+-   Naming rule — to link `libfoo.a` or `libfoo.so` use `-lfoo`. If the file has a nonstandard name or path, pass it directly (for example: `gcc ... path/to/libcustom.a ...`).
+-   Order matters — the linker resolves symbols left-to-right in a single pass. Put source/object files before libraries so the linker can resolve symbols from those objects using the libraries that follow. For circular dependencies, repeat libraries or use `--start-group`/`--end-group`.
+-   Static vs shared:
+    -   By default the linker chooses static or shared based on availability and flags.
+    -   To force static for specific libraries: `-Wl,-Bstatic -lfoo -Wl,-Bdynamic`.
+    -   For shared libraries, ensure the runtime loader can find them (set `LD_LIBRARY_PATH` or embed an rpath with `-Wl,-rpath,/path/to/libs`).
+-   Dependency order — keep libraries in dependency order (if A depends on B, use `-lA -lB`). For complex external libraries prefer `pkg-config` to get the correct `-I`, `-L`, and `-l` flags automatically.
+-   `-o your_program` — write the resulting executable to the named file.
+
+Examples:
+
+-   Link by name (uses `-lft` to find `libft` in `-L` paths):
+    -   `gcc -I. example.c -L. -lft -o example`
+-   Link the archive directly (order not sensitive for that archive):
+    -   `gcc -I. example.c libft.a -o example`
+
+Notes:
+
+-   If you have libraries with circular references, either repeat them on the command line or wrap them with `-Wl,--start-group ... -Wl,--end-group`.
+-   Use `pkg-config --cflags --libs name` when available to avoid manual ordering and flags.
+-   The linker does a single pass left-to-right; placing libraries after objects that need them is the simplest, most reliable approach.
+
 ## Examples
 
 Quick example showing how to compile and link a small program against `libft.a`.
