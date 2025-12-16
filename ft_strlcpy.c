@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:37:54 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:38:02 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -9,11 +21,11 @@
  * @return The total length of the string it tried to create,
  *         that is the length of src.
  */
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t srclen;
-	size_t copylen;
-	size_t i;
+	size_t	srclen;
+	size_t	copylen;
+	size_t	i;
 
 	if (!dst || !src)
 		return (0);

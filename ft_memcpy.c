@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:00:59 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:01:10 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -7,11 +19,11 @@
  * @param n The number of bytes to copy.
  * @return A pointer to the destination memory area dst.
  */
-void *ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *pdst;
-	char *psrc;
-	size_t i;
+	char	*pdst;
+	char	*psrc;
+	size_t	i;
 
 	if (!n || dst == src)
 		return (dst);

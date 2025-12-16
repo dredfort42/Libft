@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_digcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 14:18:39 by dnovikov          #+#    #+#             */
-/*   Updated: 2025/11/04 14:18:44 by dnovikov         ###   ########.fr       */
+/*   Created: 2025/11/04 14:17:19 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 17:35:59 by dnovikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Checks if the given character is a digit.
- * @param c The character to check.
- * @return Returns a non-zero value if the character is a digit,
- *         otherwise returns 0.
+ * @brief Counts the number of digits in a non-negative long integer.
+ * @param n The integer to analyze.
+ * @return The number of digits in the integer.
  */
-int	ft_isdigit(int c)
+int ft_digcount(int n)
 {
-	return (c >= '0' && c <= '9');
+	int digits;
+
+	if (!n)
+		return (1);
+	digits = 0;
+	while (n)
+	{
+		n /= 10;
+		digits++;
+	}
+	return (digits);
 }

@@ -1,25 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:33:59 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:34:42 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-// static void	ft_join(char *str, const char *s1, const char *s2)
-// {
-// 	int		i;
-// 	int		j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (s1[i])
-// 	{
-// 		str[i] = s1[i];
-// 		i++;
-// 	}
-// 	while (s2[j])
-// 	{
-// 		str[i] = s2[j];
-// 		i++;
-// 		j++;
-// 	}
-// 	str[i] = '\0';
-// }
 
 /**
  * Joins two strings `s1` and `s2` into a new string by allocating
@@ -29,12 +20,12 @@
  * @return A pointer to the newly allocated string containing the
  *         concatenation of `s1` and `s2`, or NULL if allocation fails.
  */
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
-	size_t len1;
-	size_t len2;
-	size_t total;
+	char	*str;
+	size_t	len1;
+	size_t	len2;
+	size_t	total;
 
 	if (!s1 && !s2)
 		return (NULL);
@@ -51,6 +42,6 @@ char *ft_strjoin(char const *s1, char const *s2)
 	if (!str)
 		return (NULL);
 	ft_memcpy(str, s1, len1);
-	ft_memcpy(str + len1, s2, len2 + 1); /* copy terminating NUL */
+	ft_memcpy(str + len1, s2, len2 + 1);
 	return (str);
 }

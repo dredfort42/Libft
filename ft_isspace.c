@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 14:18:39 by dnovikov          #+#    #+#             */
-/*   Updated: 2025/11/04 14:18:44 by dnovikov         ###   ########.fr       */
+/*   Created: 2025/11/04 14:19:52 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 14:23:46 by dnovikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Checks if the given character is a digit.
- * @param c The character to check.
- * @return Returns a non-zero value if the character is a digit,
- *         otherwise returns 0.
+ * @brief Checks if a character is a space character.
+ * @param ch The character to check.
+ * @return 1 if the character is a whitespace character, 0 otherwise.
  */
-int	ft_isdigit(int c)
+int ft_isspace(int c)
 {
-	return (c >= '0' && c <= '9');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r');
 }

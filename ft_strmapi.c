@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:38:39 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:39:31 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -5,9 +17,9 @@
  * @param len The length of the string to allocate (excluding NUL terminator).
  * @return A pointer to the newly allocated string, or NULL if allocation fails.
  */
-static char *alloc_result(size_t len)
+static char	*alloc_result(size_t len)
 {
-	char *res;
+	char	*res;
 
 	res = (char *)malloc(len + 1);
 	if (res)
@@ -23,9 +35,14 @@ static char *alloc_result(size_t len)
  * @param f The mapping function to apply.
  * @param len The length of the strings.
  */
-static void apply_map(const char *src, char *dst, char (*f)(unsigned int, char), size_t len)
+static void	apply_map(
+	const char *src,
+	char *dst,
+	char (*f)(unsigned int, char),
+	size_t len
+)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < len)
@@ -44,10 +61,10 @@ static void apply_map(const char *src, char *dst, char (*f)(unsigned int, char),
  *         the successive applications of f. Returns NULL if
  *         memory allocation fails or if s or f is NULL.
  */
-char *ft_strmapi(const char *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	size_t len;
-	char *res;
+	size_t	len;
+	char	*res;
 
 	if (!s || !f)
 		return (NULL);

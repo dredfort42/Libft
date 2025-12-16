@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:34:57 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:37:46 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -11,30 +23,23 @@
  * @return The total length of the string it tried to create,
  *         that is the initial length of dst plus the length of src.
  */
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t dlen;
-	size_t slen;
-	size_t copy;
+	size_t	i;
+	size_t	dlen;
+	size_t	copy;
 
-	slen = ft_strlen(src);
-	/* find length of dst but no further than dstsize */
 	dlen = 0;
 	while (dlen < dstsize && dst[dlen])
 		dlen++;
-	/* if no space to append, return dstsize + strlen(src) */
 	if (dlen == dstsize)
-		return (dstsize + slen);
-	/* number of bytes we can copy from src (leave room for NUL) */
+		return (dstsize + ft_strlen(src));
 	if (dstsize - dlen - 1 > 0)
 		copy = dstsize - dlen - 1;
 	else
 		copy = 0;
-	/* copy */
 	if (copy)
 	{
-		size_t i;
-
 		i = 0;
 		while (i < copy && src[i])
 		{
@@ -43,5 +48,5 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 		}
 		dst[dlen + i] = '\0';
 	}
-	return (dlen + slen);
+	return (dlen + ft_strlen(src));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:43:07 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:43:30 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -7,15 +19,15 @@
  * @return A pointer to the last occurrence of c in s,
  *         or NULL if c is not found.
  */
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char *p;
-	char ch;
+	char	*p;
+	char	ch;
 
 	if (!s)
 		return (NULL);
 	ch = (char)c;
-	p = (char *)s + ft_strlen(s); /* start at terminating '\0' */
+	p = (char *)s + ft_strlen(s);
 	while (p >= s)
 	{
 		if (*p == ch)

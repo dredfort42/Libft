@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 15:43:58 by dnovikov          #+#    #+#             */
+/*   Updated: 2025/11/04 15:44:11 by dnovikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /**
@@ -9,12 +21,12 @@
  * @return A pointer to the newly allocated trimmed string,
  *         or NULL if allocation fails.
  */
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	const char *start;
-	const char *end;
-	char *trimmed;
-	size_t len;
+	const char	*start;
+	const char	*end;
+	char		*trimmed;
+	size_t		len;
 
 	if (!s1 || !set)
 		return (NULL);

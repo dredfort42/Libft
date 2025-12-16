@@ -8,7 +8,6 @@ Build the static library (requires `make` and `gcc`):
 
 ```sh
 make        # builds libft.a
-make bonus  # build and add bonus (linked-list) functions to libft.a
 make clean  # remove object files
 make fclean # remove object files and libft.a
 make re     # rebuild from scratch
@@ -94,10 +93,7 @@ Run:
     -   `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp`, `ft_calloc`
     -   `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`, `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_itoa`, `ft_strmapi`
     -   `ft_atoi`
-
-Bonus linked-list helpers (added with `make bonus`):
-
--   `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
+    -   `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
 
 ## Contributing
 
