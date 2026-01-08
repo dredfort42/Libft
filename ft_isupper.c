@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_isupper_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,7 @@
  * @return Returns a non-zero value if the character is an uppercase letter,
  *         otherwise returns 0.
  */
-int ft_isupper(int c)
+int	ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }

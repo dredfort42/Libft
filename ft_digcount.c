@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_digcount.c                                      :+:      :+:    :+:   */
+/*   ft_digcount_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,9 +17,9 @@
  * @param n The integer to analyze.
  * @return The number of digits in the integer.
  */
-int ft_digcount(int n)
+int	ft_digcount(int n)
 {
-	int digits;
+	int	digits;
 
 	if (!n)
 		return (1);

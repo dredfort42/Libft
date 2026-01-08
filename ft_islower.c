@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   ft_islower_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnovikov <dnovikov@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,7 @@
  * @return Returns a non-zero value if the character is a lowercase letter,
  *         otherwise returns 0.
  */
-int ft_islower(int c)
+int	ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }
